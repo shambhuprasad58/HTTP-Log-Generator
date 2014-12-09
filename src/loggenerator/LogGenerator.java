@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.FileLock;
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -21,10 +22,13 @@ public class LogGenerator {
         LogGenerator logGenerator = new LogGenerator();
         String logFile = "test_logs.txt";
         Random r = new Random();
+        Scanner scanner = new Scanner(System.in);
         while(true)
         {
-            logGenerator.writeToFile(logFile, r.nextInt(10));
-            Thread.sleep(r.nextInt(10)*1000);
+            System.out.println("Enter number of new logs you want to write");
+            int count = scanner.nextInt();
+            logGenerator.writeToFile(logFile, count);
+            //Thread.sleep(r.nextInt(10)*1000);
         }
     }
     public void writeToFile(String logFile, int logCount) throws IOException
